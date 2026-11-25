@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raio-X da Verdade — Teste de Alerta do Relacionamento</title>
+  <meta name="description" content="Descubra em 60 segundos se você está sendo paranoica ou ignorando sinais óbvios de deslealdade e desgaste." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <a href="index.html" class="brand">
+        <span class="brand-dot"></span>
+        <span id="brand-name">SEM ILUSÃO</span>
+      </a>
+      <span class="badge">RAIO-X GRATUITO</span>
+    </header>
+
+    <!-- TELA 1: ABERTURA -->
+    <section id="screen-intro">
+      <div class="card card-highlight">
+        <span class="badge badge-gold">DIAGNÓSTICO EM 60 SEGUNDOS</span>
+        <h1>Você está sendo <em>paranoica</em>… ou ele realmente está escondendo algo?</h1>
+        <p class="lead">
+          A intuição feminina quase nunca erra. O que faz você duvidar de si mesma é a vontade de acreditar em desculpa bem contada.
+        </p>
+
+        <div class="quote-box">
+          "Quem não deve nada não perde a paciência quando você faz uma pergunta simples."
+        </div>
+
+        <p style="font-size:0.9rem; color: var(--muted); margin-bottom:20px;">
+          Responda <strong>10 perguntas diretas</strong> sobre a rotina e as atitudes dele. No final, o sistema calcula o seu <strong>Índice de Alerta (0% a 100%)</strong> e mostra exatamente onde está o perigo.
+        </p>
+
+        <button id="btn-start" class="btn btn-primary pulse">
+          DESCOBRIR A VERDADE AGORA →
+        </button>
+
+        <div class="trust-row">
+          <span>🔒 100% anônimo</span>
+          <span>⚡ Resultado na hora</span>
+          <span>📱 Sem cadastro</span>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:12px;">
+        <a href="oferta.html" style="color:var(--muted); font-size:0.84rem;">Já conhece o Manual Sem Ilusão? Ir direto para a oferta →</a>
+      </div>
+    </section>
+
+    <!-- TELA 2: QUIZ -->
+    <section id="screen-quiz" class="hidden">
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="q-counter">Pergunta 1 de 10</span>
+          <span id="q-percent">10%</span>
+        </div>
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span id="q-tag" class="badge" style="margin-bottom:12px;">SINAL 01</span>
+        <h2 id="q-title" class="question-title"></h2>
+        <div id="q-options" class="options-list"></div>
+        <div id="micro-note" class="micro-note hidden"></div>
+      </div>
+    </section>
+
+    <!-- TELA 3: ANALISANDO -->
+    <section id="screen-loading" class="hidden">
+      <div class="card analyzer-box">
+        <div class="spinner"></div>
+        <h2 class="serif">Cruzando seus padrões…</h2>
+        <p id="loading-status" class="lead" style="margin-bottom:0;">Avaliando sinais de omissão e coerência…</p>
+      </div>
+    </section>
+
+    <!-- TELA 4: RESULTADO + OFERTA -->
+    <section id="screen-result" class="hidden">
+      <div class="card card-highlight">
+        <div class="score-header">
+          <span id="res-badge" class="badge">RESULTADO DO SEU RAIO-X</span>
+          <div id="res-score" class="score-number">0%</div>
+          <h2 id="res-title" style="margin-bottom:6px;"></h2>
+          <p id="res-subtitle" class="lead" style="margin-bottom:0; font-size:0.94rem;"></p>
+        </div>
+
+        <div class="score-bar">
+          <div id="score-marker" class="score-marker" style="left: 10%;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--muted); margin-bottom:16px;">
+          <span>ZONA DE RUÍDO</span>
+          <span>ZONA DE NÉVOA</span>
+          <span>CÓDIGO VERMELHO</span>
+        </div>
+
+        <h3 style="margin-top:18px; color:var(--gold);">O que as suas respostas escancaram:</h3>
+        <ul id="res-insights" class="insight-list"></ul>
+
+        <div class="quote-box" id="res-truth"></div>
+      </div>
+
+      <!-- PONTE PARA O PRODUTO -->
+      <div class="card card-highlight">
+        <span class="badge badge-gold" id="offer-badge">OFERTA BLACK FRIDAY • LOTE RELÂMPAGO</span>
+        <h2 style="margin-top:12px;">Agora a verdade que dói: <em>saber que algo está errado não resolve nada</em> se você confrontar do jeito errado.</h2>
+        <p style="font-size:0.94rem; color:var(--muted); margin-bottom:14px;">
+          Quando você cobra no calor da emoção, chora ou ameaça sem postura, ele só aprende a <strong>esconder melhor</strong> — e ainda vira o jogo dizendo que você é surtada.
+        </p>
+        <p style="font-size:0.94rem; color:#ebe8f2; margin-bottom:14px;">
+          Por isso criamos o pacote <strong>SEM ILUSÃO</strong>: o protocolo direto para ler comportamentos sem cair em manipulação, responder com frieza cirúrgica e retomar o controle em 7 dias.
+        </p>
+
+        <ul class="check-list">
+          <li><span class="check-icon">✦</span><div><strong>Manual Completo SEM ILUSÃO (PDF para celular):</strong> os 21 padrões de deslealdade e desgaste, como validar fatos sem se humilhar e roteiros de conversa cara a cara.</div></li>
+          <li><span class="check-icon">✦</span><div><strong>BÔNUS — Web App "Bolso da Clareza":</strong> gerador interativo com respostas prontas, frias e elegantes para 12 situações de WhatsApp (só copiar e colar) + Diário de Fatos anti-ilusão.</div></li>
+          <li><span class="check-icon">✦</span><div><strong>Plano de 7 Dias de Postura:</strong> o passo a passo exato para parar de aceitar migalhas e decidir com cabeça fria.</div></li>
+        </ul>
+
+        <div class="price-box">
+          <div class="price-old">De <span id="price-old">R$ 79,90</span> por apenas:</div>
+          <div class="price-now" id="price-now">R$ 29,90</div>
+          <div class="price-sub" id="price-sub">ou 4x de R$ 8,14 • Acesso imediato + Garantia de 7 dias</div>
+        </div>
+
+        <a id="cta-checkout" href="#" class="btn btn-primary pulse" target="_blank" rel="noopener">
+          QUERO O MANUAL + WEB APP AGORA →
+        </a>
+
+        <div class="trust-row">
+          <span>🔒 Pagamento seguro Kiwify</span>
+          <span>⚡ Pix libera em segundos</span>
+          <span>🛡️ 7 dias de garantia</span>
+        </div>
+
+        <div style="text-align:center; margin-top:14px;">
+          <a href="oferta.html" style="color:var(--muted); font-size:0.83rem;">Ver tudo que vem dentro do pacote →</a>
+        </div>
+      </div>
+
+      <button id="btn-retry" class="btn btn-ghost">Refazer o Raio-X</button>
+    </section>
+
+    <footer class="footer">
+      <p><span id="footer-brand">SEM ILUSÃO</span> • <span id="footer-handle">@seuperfil</span></p>
+      <p style="margin-top:6px;">Conteúdo informativo de clareza emocional e comportamento. Não substitui acompanhamento psicológico.</p>
+    </footer>
+  </main>
+
+  <script>
+    const CFG = window.APP_CONFIG || {};
+    document.getElementById('brand-name').textContent = CFG.MARCA || 'SEM ILUSÃO';
+    document.getElementById('footer-brand').textContent = CFG.MARCA || 'SEM ILUSÃO';
+    document.getElementById('footer-handle').textContent = CFG.PERFIL_HANDLE || '';
+    document.getElementById('price-old').textContent = CFG.PRECO_ANTIGO || 'R$ 79,90';
+    document.getElementById('price-now').textContent = CFG.PRECO_ATUAL || 'R$ 29,90';
+    document.getElementById('price-sub').textContent = (CFG.PARCELAMENTO || 'ou 4x de R$ 8,14') + ' • Acesso imediato + Garantia de 7 dias';
+    document.getElementById('offer-badge').textContent = CFG.SELO_OFERTA || 'OFERTA RELÂMPAGO';
+
+    const QUESTIONS = [
+      {
+        tag: "SINAL 01 • SIGILO",
+        title: "Como ele reage quando o celular vibra ou fica perto de você?",
+        category: "sigilo",
+        options: [
+          { text: "Deixa normal, sem paranoia nem pressa para esconder.", score: 0, note: "Transparência natural não precisa de discurso." },
+          { text: "Sempre deixa virado para baixo ou no silencioso quando está comigo.", score: 6, note: "Hábito novo de proteção raramente nasce do nada." },
+          { text: "Leva até para o banheiro, trocou senha ou fica tenso se eu chego perto.", score: 10, note: "Quem não esconde nada não entra em modo defesa por causa de uma tela." }
+        ]
+      },
+      {
+        tag: "SINAL 02 • INVERSÃO DE CULPA",
+        title: "Quando você faz uma pergunta direta sobre algo que te incomodou, o que ele faz?",
+        category: "manipulacao",
+        options: [
+          { text: "Escuta com calma e conversa até ficarmos em paz.", score: 0, note: "Respeito se prova na hora do desconforto." },
+          { text: "Fica seco, muda de assunto ou diz que está cansado para falar disso.", score: 6, note: "Fugir de conversa simples é o jeito mais fácil de empurrar o problema com a barriga." },
+          { text: "Se irrita, vira o jogo e termina fazendo EU me sentir culpada ou 'louca'.", score: 10, note: "Clássico: quando falta verdade, sobra ataque para te fazer recuar." }
+        ]
+      },
+      {
+        tag: "SINAL 03 • ROTINA",
+        title: "Nos últimos tempos, a rotina dele mudou com 'imprevistos' frequentes?",
+        category: "rotina",
+        options: [
+          { text: "Não, continua previsível e coerente.", score: 0, note: "Coerência traz paz — e você sente isso no corpo." },
+          { text: "Alguns sumiços estranhos ou demoras fora do normal para responder.", score: 6, note: "Ninguém fica 6 horas sem ver o celular hoje em dia. Fica sem querer responder você." },
+          { text: "Vários 'imprevistos', trabalho extra do nada e histórias que não batem.", score: 10, note: "Quando a história muda de detalhe toda semana, não é falta de memória." }
+        ]
+      },
+      {
+        tag: "SINAL 04 • ESFORÇO",
+        title: "Compare o que ele PROMETE com o que ele FAZ na prática:",
+        category: "migalhas",
+        options: [
+          { text: "Ele cumpre o que fala e demonstra prioridade sem eu precisar implorar.", score: 0, note: "Atitude constante vale mais que mil juras." },
+          { text: "Só se esforça quando percebe que eu esfriei ou estou prestes a desistir.", score: 7, note: "Isso não é amor crescendo — é medo de perder o conforto que você dá." },
+          { text: "Promete mudar há meses, mas na prática me entrega o mínimo do mínimo.", score: 10, note: "Você não está num relacionamento; está mantendo uma expectativa sozinha." }
+        ]
+      },
+      {
+        tag: "SINAL 05 • MONTANHA-RUSSA",
+        title: "Você sente oscilações bruscas: dias frio/distante e do nada super carinhoso?",
+        category: "manipulacao",
+        options: [
+          { text: "Não, o jeito dele comigo é estável.", score: 0, note: "Estabilidade não dá frio na barriga — dá segurança." },
+          { text: "Sim, às vezes esfria do nada e me deixa sem entender o que eu fiz.", score: 7, note: "A dúvida constante é o que mantém muita mulher presa tentando 'reconquistar'." },
+          { text: "Demais. E quando aparece carinhoso do nada, meu instinto até desconfia.", score: 10, note: "Carinho repentino fora de hora muitas vezes é culpa disfarçada de romantismo." }
+        ]
+      },
+      {
+        tag: "SINAL 06 • RESPEITO ONLINE",
+        title: "Como é a postura dele nas redes sociais em relação a outras mulheres?",
+        category: "sigilo",
+        options: [
+          { text: "Respeitosa; não me dá motivo para passar vergonha.", score: 0, note: "Homem resolvido não precisa de validação de outras." },
+          { text: "Curte fotos provocativas ou mantém 'amigas' que claramente passam do limite.", score: 7, note: "Ele sabe exatamente o que está fazendo — só testa até onde você engole." },
+          { text: "Esconde stories, tem conversas apagadas ou já peguei mentira envolvendo outra.", score: 10, note: "Conversa que precisa ser apagada nunca é inocente." }
+        ]
+      },
+      {
+        tag: "SINAL 07 • TRANSPARÊNCIA",
+        title: "Você já pegou pequenas mentiras bobas — daquelas que nem precisavam existir?",
+        category: "rotina",
+        options: [
+          { text: "Nunca percebi mentiras dele.", score: 0, note: "Confiança se constrói nos detalhes pequenos." },
+          { text: "Uma ou duas vezes, mas ele jurou que foi para 'evitar briga'.", score: 7, note: "Quem mente 'para evitar briga' está dizendo que prefere te enganar a te respeitar." },
+          { text: "Várias vezes. Sempre que aperto um pouco, descubro uma versão diferente.", score: 10, note: "Mentira pequena é treino para mentira grande." }
+        ]
+      },
+      {
+        tag: "SINAL 08 • POSTURA",
+        title: "Se você parar de puxar assunto ou cobrar atenção por 48h, o que acontece?",
+        category: "migalhas",
+        options: [
+          { text: "Ele percebe rápido, me procura de verdade e pergunta se está tudo bem.", score: 0, note: "Reciprocidade não precisa de joguinho." },
+          { text: "Manda algo raso só para ver se eu ainda estou disponível.", score: 6, note: "Ele não sente sua falta — sente falta de saber que você está ali." },
+          { text: "Age como se não tivesse notado, ou ainda reclama que EU sumi.", score: 10, note: "Quando só uma pessoa sustenta o vínculo, o vínculo já acabou faz tempo." }
+        ]
+      },
+      {
+        tag: "SINAL 09 • SUA PAZ",
+        title: "Como está a sua mente dentro desse relacionamento nos últimos 30 dias?",
+        category: "emocional",
+        options: [
+          { text: "Tranquila na maior parte do tempo, só com dúvidas pontuais.", score: 2, note: "Observar cedo evita desgastes grandes depois." },
+          { text: "Cansada. Fico checando última visualização e tentando adivinhar o humor dele.", score: 7, note: "Relacionamento saudável não transforma você em detetive." },
+          { text: "Esgotada. Sinto um aperto no peito constante, mas tenho medo de confirmar.", score: 10, note: "O que te destrói não é a verdade — é o tempo que você perde adiando ela." }
+        ]
+      },
+      {
+        tag: "SINAL 10 • A VERDADE NUA",
+        title: "Se sua melhor amiga estivesse vivendo EXATAMENTE o que você vive hoje, o que você diria?",
+        category: "emocional",
+        options: [
+          { text: "'Calma, conversa com ele e alinha os limites.'", score: 2, note: "Clareza de fora quase sempre é mais lúcida." },
+          { text: "'Amiga, você está se diminuindo demais para caber aí.'", score: 7, note: "Você já sabe o conselho. Só está adiando aplicar em você." },
+          { text: "'Abre o olho e sai dessa antes de perder mais um ano da sua vida.'", score: 10, note: "No fundo, você não precisa de mais provas — precisa de postura." }
+        ]
+      }
+    ];
+
+    let currentIdx = 0;
+    let totalScore = 0;
+    const categoryScores = { sigilo: 0, manipulacao: 0, rotina: 0, migalhas: 0, emocional: 0 };
+
+    const screenIntro = document.getElementById('screen-intro');
+    const screenQuiz = document.getElementById('screen-quiz');
+    const screenLoading = document.getElementById('screen-loading');
+    const screenResult = document.getElementById('screen-result');
+
+    document.getElementById('btn-start').addEventListener('click', () => {
+      currentIdx = 0;
+      totalScore = 0;
+      Object.keys(categoryScores).forEach(k => categoryScores[k] = 0);
+      screenIntro.classList.add('hidden');
+      screenQuiz.classList.remove('hidden');
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.getElementById('btn-retry').addEventListener('click', () => {
+      screenResult.classList.add('hidden');
+      screenIntro.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function renderQuestion() {
+      const q = QUESTIONS[currentIdx];
+      const num = currentIdx + 1;
+      const pct = Math.round((num / QUESTIONS.length) * 100);
+
+      document.getElementById('q-counter').textContent = `Pergunta ${num} de ${QUESTIONS.length}`;
+      document.getElementById('q-percent').textContent = `${pct}%`;
+      document.getElementById('progress-fill').style.width = `${pct}%`;
+      document.getElementById('q-tag').textContent = q.tag;
+      document.getElementById('q-title').textContent = q.title;
+
+      const micro = document.getElementById('micro-note');
+      micro.classList.add('hidden');
+
+      const optionsBox = document.getElementById('q-options');
+      optionsBox.innerHTML = '';
+      const letters = ['A', 'B', 'C'];
+
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt.text}</span>`;
+        btn.addEventListener('click', () => handleAnswer(q.category, opt));
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function handleAnswer(category, opt) {
+      totalScore += opt.score;
+      categoryScores[category] += opt.score;
+
+      // trava cliques duplicados e mostra micro-verdade rápida
+      const btns = document.querySelectorAll('.option-btn');
+      btns.forEach(b => b.disabled = true);
+
+      const micro = document.getElementById('micro-note');
+      micro.textContent = `✦ ${opt.note}`;
+      micro.classList.remove('hidden');
+
+      setTimeout(() => {
+        currentIdx++;
+        if (currentIdx < QUESTIONS.length) {
+          renderQuestion();
+        } else {
+          showAnalyzer();
+        }
+      }, 650);
+    }
+
+    function showAnalyzer() {
+      screenQuiz.classList.add('hidden');
+      screenLoading.classList.remove('hidden');
+      const statusEl = document.getElementById('loading-status');
+      const steps = [
+        "Avaliando sinais de omissão e coerência…",
+        "Identificando padrões de inversão de culpa…",
+        "Gerando seu Índice de Alerta personalizado…"
+      ];
+      let step = 0;
+      const timer = setInterval(() => {
+        step++;
+        if (step < steps.length) {
+          statusEl.textContent = steps[step];
+        } else {
+          clearInterval(timer);
+          renderResult();
+        }
+      }, 650);
+    }
+
+    function renderResult() {
+      screenLoading.classList.add('hidden');
+      screenResult.classList.remove('hidden');
+
+      const score = Math.min(100, Math.max(8, totalScore));
+      document.getElementById('res-score').textContent = `${score}%`;
+
+      let levelTitle, levelSub, levelColor, badgeText, truthQuote;
+
+      if (score <= 35) {
+        badgeText = "NÍVEL 1 • ZONA DE RUÍDO";
+        levelTitle = "Alerta Baixo, mas Atenção às Brechas";
+        levelSub = "Não há um padrão claro de traição ativa nas suas respostas, mas existem falhas de alinhamento que, se ignoradas, viram desgaste real.";
+        levelColor = "#22c55e";
+        truthQuote = "“Relacionamento não morre de um dia pro outro — ele esfria nas pequenas coisas que você finge que não viu.”";
+      } else if (score <= 68) {
+        badgeText = "NÍVEL 2 • ZONA DE NÉVOA";
+        levelTitle = "Alerta Alto: Você Está Aceitando Migalhas";
+        levelSub = "Mesmo que não exista prova de traição física, há sinais claros de distanciamento, falta de transparência ou desequilíbrio emocional.";
+        levelColor = "#f59e0b";
+        truthQuote = "“Ele não está 'confuso'. Ele está confortável sabendo que você continua aí mesmo recebendo metade.”";
+      } else {
+        badgeText = "NÍVEL 3 • CÓDIGO VERMELHO";
+        levelTitle = "Alerta Crítico: Sinais Clássicos de Omissão";
+        levelSub = "Você marcou múltiplos padrões de sigilo, inversão de culpa e inconsistência. Ignorar isso agora só vai te custar mais saúde mental e tempo.";
+        levelColor = "#f43f5e";
+        truthQuote = "“Você não está louca. Você só está enxergando exatamente o que ele queria que você continuasse fingindo não ver.”";
+      }
+
+      document.getElementById('res-badge').textContent = badgeText;
+      document.getElementById('res-score').style.color = levelColor;
+      document.getElementById('res-title').textContent = levelTitle;
+      document.getElementById('res-subtitle').textContent = levelSub;
+      document.getElementById('res-truth').textContent = truthQuote;
+
+      setTimeout(() => {
+        document.getElementById('score-marker').style.left = `${score}%`;
+      }, 80);
+
+      // Gera 3 insights baseados nas categorias mais altas que ELA marcou
+      const insightMap = {
+        sigilo: {
+          head: "Blindagem & Sigilo",
+          body: "Você sinalizou comportamentos de proteção excessiva com celular ou postura online. Em relações saudáveis, privacidade existe, mas segredo defensivo não."
+        },
+        manipulacao: {
+          head: "Inversão de Culpa (Gaslighting)",
+          body: "Suas respostas indicam que quando você questiona algo legítimo, o assunto vira contra você. Esse é o truque nº 1 para te fazer parar de perguntar."
+        },
+        rotina: {
+          head: "Inconsistência na Rotina",
+          body: "Histórias mal contadas e mudanças repentinas drenam sua confiança. Nunca confronte só com suspeita — confronte com fatos observados."
+        },
+        migalhas: {
+          head: "Ciclo de Migalhas",
+          body: "Você está investindo energia de esposa em alguém que está entregando esforço de desconhecido. Sem mudança de postura sua, nada muda nele."
+        },
+        emocional: {
+          head: "Desgaste da Sua Paz",
+          body: "O maior termômetro já apitou: você está exausta tentando decifrar alguém. Quem tem postura não implora clareza — exige com ações."
+        }
+      };
+
+      const sortedCats = Object.entries(categoryScores)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3);
+
+      const ul = document.getElementById('res-insights');
+      ul.innerHTML = '';
+      sortedCats.forEach(([cat]) => {
+        const info = insightMap[cat];
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${info.head}</strong>${info.body}`;
+        ul.appendChild(li);
+      });
+
+      const cta = document.getElementById('cta-checkout');
+      cta.href = CFG.CHECKOUT_URL || '#';
+      cta.onclick = (e) => {
+        if (!CFG.CHECKOUT_URL || CFG.CHECKOUT_URL.includes('SEU-LINK-AQUI')) {
+          e.preventDefault();
+          alert('Aviso da criadora: cole o seu link de checkout da Kiwify no arquivo site/config.js!');
+        }
+      };
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

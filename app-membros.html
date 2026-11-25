@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolso da Clareza — Área de Membros SEM ILUSÃO</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <style>
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .tab-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 11px 8px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: center;
+    }
+    .tab-btn.active {
+      background: rgba(225, 29, 72, 0.16);
+      border-color: var(--crimson);
+      color: #fff;
+    }
+    .field {
+      width: 100%;
+      background: #0d0d12;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 13px 14px;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.94rem;
+      margin-bottom: 12px;
+    }
+    .field:focus {
+      outline: none;
+      border-color: var(--crimson);
+    }
+    .reply-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 11px;
+    }
+    .reply-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .reply-text {
+      font-size: 0.95rem;
+      color: #f6f4fa;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .dont-box {
+      background: rgba(225, 29, 72, 0.09);
+      border: 1px solid rgba(225, 29, 72, 0.3);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.86rem;
+      color: #ffc2cf;
+      margin-top: 8px;
+    }
+    .fact-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .fact-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .fact-del {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.78rem;
+      text-decoration: underline;
+    }
+    .day-card {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+    }
+    .day-card.done {
+      border-color: rgba(34, 197, 94, 0.45);
+      background: rgba(34, 197, 94, 0.06);
+    }
+    .day-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      border: 2px solid var(--muted);
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+    .day-card.done .day-check {
+      background: var(--green);
+      border-color: var(--green);
+      color: #06130b;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .stat-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--crimson-bright);
+    }
+    .stat-lbl {
+      font-size: 0.74rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <a href="oferta.html" class="brand">
+        <span class="brand-dot"></span>
+        <span id="brand-name">SEM ILUSÃO</span>
+      </a>
+      <span class="badge badge-gold">ÁREA DE MEMBROS</span>
+    </header>
+
+    <!-- TELA DE SENHA -->
+    <section id="gate-screen" class="card card-highlight">
+      <span class="badge">ACESSO EXCLUSIVO PARA ALUNAS</span>
+      <h1 style="font-size:1.8rem;">Bolso da <em>Clareza</em></h1>
+      <p class="lead">
+        Digite o código de acesso enviado no seu e-mail da Kiwify para liberar o Gerador de Respostas, o Diário de Fatos e o Protocolo de 7 Dias.
+      </p>
+      <input id="gate-input" class="field" type="text" placeholder="Digite seu código de acesso (ex: CLAREZA2026)" autocomplete="off" />
+      <button id="gate-btn" class="btn btn-primary">LIBERAR MEU ACESSO →</button>
+      <p id="gate-err" style="color:#ff8aa2; font-size:0.85rem; margin-top:10px;" class="hidden">Código incorreto. Confira o código enviado na sua área de membros da Kiwify.</p>
+      <p style="font-size:0.8rem; color:var(--muted); margin-top:16px; text-align:center;">
+        Ainda não tem acesso? <a href="oferta.html" style="color:var(--gold);">Garanta o Manual + Web App aqui</a>
+      </p>
+    </section>
+
+    <!-- APP DESBLOQUEADO -->
+    <section id="app-screen" class="hidden">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="respostas">💬 Respostas</button>
+        <button class="tab-btn" data-tab="diario">📓 Diário de Fatos</button>
+        <button class="tab-btn" data-tab="protocolo">🔥 7 Dias</button>
+      </div>
+
+      <!-- ABA 1: GERADOR DE RESPOSTAS -->
+      <div id="tab-respostas">
+        <div class="card">
+          <span class="badge">COPIE E COLE NO WHATSAPP</span>
+          <h2 style="margin-top:10px; font-size:1.35rem;">Gerador de Respostas Frias &amp; Firmes</h2>
+          <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">
+            Escolha a situação que acabou de acontecer. Sem textão, sem drama e sem dar palco para manipulação.
+          </p>
+          <select id="situation-select" class="field"></select>
+          <div id="replies-container"></div>
+        </div>
+      </div>
+
+      <!-- ABA 2: DIÁRIO DE FATOS -->
+      <div id="tab-diario" class="hidden">
+        <div class="card">
+          <span class="badge badge-gold">100% PRIVADO NO SEU CELULAR</span>
+          <h2 style="margin-top:10px; font-size:1.35rem;">Diário de Fatos Anti-Ilusão</h2>
+          <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">
+            A emoção esquece; o registro não. Anote apenas <strong>fatos reais</strong> e a desculpa que ele deu. Nada sai do seu navegador.
+          </p>
+
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-val" id="stat-total">0</div>
+              <div class="stat-lbl">Fatos Registrados</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="stat-top" style="font-size:1.05rem; padding-top:6px;">—</div>
+              <div class="stat-lbl">Padrão Repetido</div>
+            </div>
+          </div>
+
+          <div id="pattern-alert" class="quote-box hidden" style="margin-top:0;"></div>
+
+          <select id="fact-cat" class="field">
+            <option value="Sigilo / Celular">Tipo: Sigilo / Celular</option>
+            <option value="Inversão de Culpa">Tipo: Inversão de Culpa</option>
+            <option value="Migalha / Frieza">Tipo: Migalha / Frieza</option>
+            <option value="Mentira / História Torta">Tipo: Mentira / História Torta</option>
+            <option value="Desrespeito / Limite">Tipo: Desrespeito / Limite</option>
+          </select>
+          <textarea id="fact-what" class="field" rows="2" placeholder="O que aconteceu de fato? (Ex: Sumiu sábado à noite e visualizou sem responder)"></textarea>
+          <input id="fact-excuse" class="field" type="text" placeholder="Qual foi a desculpa dele? (Ex: Disse que o celular descarregou)" />
+          <button id="btn-add-fact" class="btn btn-primary">REGISTRAR FATO</button>
+        </div>
+
+        <div id="facts-list"></div>
+        <button id="btn-clear-facts" class="btn btn-ghost hidden" style="margin-top:8px; font-size:0.84rem;">Apagar todos os registros (Modo Privacidade)</button>
+      </div>
+
+      <!-- ABA 3: PROTOCOLO 7 DIAS -->
+      <div id="tab-protocolo" class="hidden">
+        <div class="card">
+          <span class="badge">RECUPERE O CONTROLE EM 1 SEMANA</span>
+          <h2 style="margin-top:10px; font-size:1.35rem;">Protocolo dos 7 Dias de Postura</h2>
+          <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">
+            Toque em cada dia ao concluir. Em 7 dias, você vai saber com 100% de clareza se ele se mexe quando você para de carregar a relação nas costas.
+          </p>
+          <div class="progress-wrap">
+            <div class="progress-meta">
+              <span>Seu Progresso</span>
+              <span id="days-progress-txt">0 de 7 dias</span>
+            </div>
+            <div class="progress-track">
+              <div id="days-progress-fill" class="progress-fill"></div>
+            </div>
+          </div>
+          <div id="days-list"></div>
+        </div>
+      </div>
+
+      <button id="btn-lock" class="btn btn-ghost" style="margin-top:10px; font-size:0.82rem;">🔒 Trancar Área de Membros</button>
+    </section>
+
+    <footer class="footer">
+      <p><span id="footer-brand">SEM ILUSÃO</span> • Área Exclusiva</p>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast hidden">Copiado para a área de transferência!</div>
+
+  <script>
+    const CFG = window.APP_CONFIG || {};
+    const EXPECTED_PASS = (CFG.SENHA_MEMBROS || 'CLAREZA2026').trim().toUpperCase();
+    document.getElementById('brand-name').textContent = CFG.MARCA || 'SEM ILUSÃO';
+    document.getElementById('footer-brand').textContent = CFG.MARCA || 'SEM ILUSÃO';
+
+    const STORAGE_AUTH = 'sem_ilusao_auth_v1';
+    const STORAGE_FACTS = 'sem_ilusao_facts_v1';
+    const STORAGE_DAYS = 'sem_ilusao_days_v1';
+
+    const SITUATIONS = [
+      {
+        title: "1. Sumiu o fim de semana e voltou com 'oi sumida'",
+        elegante: "Oi! Não sumi, só sigo o ritmo de quem fala comigo. Tudo bem por aí?",
+        direta: "Engraçado você chamar de sumida quando foi você quem desapareceu desde sexta. Não curto esse tipo de dinâmica.",
+        fria: "Oi. Estou bem, obrigada.",
+        dont: "NUNCA mande textão cobrando onde ele estava nem diga 'estava com saudade' — isso premia o sumiço."
+      },
+      {
+        title: "2. Virou o jogo e te chamou de 'louca / ciumenta / surtada'",
+        elegante: "Não vou discutir meu tom de voz para desviar do fato. Quando quiser conversar sobre o que aconteceu, eu escuto.",
+        direta: "Me chamar de louca não apaga o que você fez. Ou você responde o fato com maturidade, ou encerramos essa conversa aqui.",
+        fria: "Entendi. Não tenho energia para inversão de culpa hoje.",
+        dont: "NUNCA comece a se justificar ('não sou louca, é que eu só queria...'). Se você se defende, ele venceu a distração."
+      },
+      {
+        title: "3. Cancelou em cima da hora sem propor outro dia",
+        elegante: "Sem problema, acontece. Vou organizar meus planos por aqui. Boa noite!",
+        direta: "Tudo bem cancelar, imprevistos acontecem. Só não funciona para mim ficar de reserva em cima da hora.",
+        fria: "Tranquilo, obrigada por avisar.",
+        dont: "NUNCA pergunte 'então a gente se vê amanhã?'. Quem desmarca tem a obrigação de remarcar."
+      },
+      {
+        title: "4. Desculpa esfarrapada ('tava sem bateria / dormi cedo')",
+        elegante: "Fica tranquilo, não precisa se explicar tanto. Eu já entendi como funciona a sua prioridade.",
+        direta: "Hoje em dia ninguém fica 18 horas sem ver o celular, mas tudo bem — cada um escolhe onde coloca esforço.",
+        fria: "Aham, entendi.",
+        dont: "NUNCA tente provar que ele estava online tirando print. Ele vai te chamar de obcecada e continuar mentindo."
+      },
+      {
+        title: "5. Curtiu ou comentou foto provocativa de outra",
+        elegante: "Não controlo o que você curte na internet, mas também não fico com homem que precisa de validação de outras em público.",
+        direta: "Falta de postura online diz mais sobre você do que sobre mim. Para mim, respeito não é negociável.",
+        fria: "Cada um mostra o nível de respeito que tem. Só estou observando.",
+        dont: "NUNCA ataque a outra mulher nem faça barraco nos comentários — o compromisso é dele com você."
+      },
+      {
+        title: "6. Pediu 'um tempo' mas quer continuar conversando",
+        elegante: "Eu apoio seu tempo — e tempo de verdade significa sem contato. Fique à vontade para viver o que precisa.",
+        direta: "Tempo com benefício de namorado não existe para mim. Se quer espaço, pode ter espaço total.",
+        fria: "Combinado. Sem contato a partir de agora para você pensar com calma.",
+        dont: "NUNCA aceite ficar no 'banco de reservas' esperando ele testar outras opções."
+      },
+      {
+        title: "7. Ficou frio dias e do nada apareceu super carinhoso",
+        elegante: "Legal o carinho, mas eu valorizo constância, não montanha-russa.",
+        direta: "Gosto quando você está bem assim, só não vou fingir que os últimos dias de frieza não existiram.",
+        fria: "Obrigada pelo carinho. Como foi seu dia?",
+        dont: "NUNCA derreta na hora e apague todos os sinais anteriores por causa de 2 mensagens fofas."
+      },
+      {
+        title: "8. Mentiu sobre algo pequeno ('foi só para evitar briga')",
+        elegante: "Mentir 'para evitar briga' significa que você prefere me enganar a sustentar a verdade. Isso destrói confiança igual.",
+        direta: "O problema não é o tamanho do assunto, é a facilidade com que você mente olhando na minha cara.",
+        fria: "Anotado. Confiança não combina com 'meia verdade'.",
+        dont: "NUNCA minimize dizendo 'tá bom, dessa vez eu deixo passar' sem marcar limite."
+      },
+      {
+        title: "9. Ex manda mensagem e ele diz 'é só amizade'",
+        elegante: "Você é livre para ter as amizades que quiser. Eu sou livre para não dividir atenção com passado mal resolvido.",
+        direta: "Se ainda existe vínculo aberto com ex, você não está 100% disponível para o presente. Pense no que você quer priorizar.",
+        fria: "Entendi sua posição. Agora eu também tenho a minha.",
+        dont: "NUNCA implore para ele bloquear a ex — se ele não corta por respeito próprio a você, bloquear escondido não muda o caráter."
+      },
+      {
+        title: "10. Prometeu mudar pela décima vez ('dessa vez vai ser diferente')",
+        elegante: "Eu já ouvi essa frase antes. Desta vez não precisa prometer nada — só me mostra com atitude nos próximos 30 dias.",
+        direta: "Palavra bonita não tem mais crédito aqui. Só vou considerar o que eu enxergar na prática.",
+        fria: "Torço para que sim. O tempo vai mostrar.",
+        dont: "NUNCA volte a entregar 100% no minuto seguinte só porque ele chorou ou fez juras."
+      },
+      {
+        title: "11. Tentou fazer ciúmes de propósito para te desestabilizar",
+        elegante: "Que bom que você se diverte. Eu não compito por atenção de ninguém.",
+        direta: "Joguinho de ciúmes não funciona comigo — só tira meu interesse mais rápido.",
+        fria: "Legal.",
+        dont: "NUNCA dê a reação de raiva que ele está pescando. Indiferença elegante desarma qualquer provocação."
+      },
+      {
+        title: "12. Decisão final: encerrar sem drama e sem porta aberta",
+        elegante: "Eu pensei com calma e esse formato não me faz mais bem. Te desejo o melhor, mas daqui para frente sigo meu caminho sozinha.",
+        direta: "Não vou mais negociar o básico. Encerro por aqui com a consciência tranquila e sem ressentimento.",
+        fria: "Decidi encerrar nosso ciclo aqui. Peço que respeite minha decisão. Tudo de bom.",
+        dont: "NUNCA termine esperando que ele corra atrás para te convencer do contrário. Termine quando estiver decidida."
+      }
+    ];
+
+    const DAYS = [
+      { day: 1, title: "Dia 1 — Desligue o modo detetive", desc: "Zero stalkear última visualização, curtidas ou seguidores dele por 24h. Toda vez que sentir vontade, anote no Diário de Fatos." },
+      { day: 2, title: "Dia 2 — Corte 100% dos textões", desc: "Hoje nenhuma mensagem sua passa de 2 linhas. Responda no mesmo nível de esforço e tempo que ele entrega." },
+      { day: 3, title: "Dia 3 — Teste do Silêncio Ativo", desc: "Não puxe assunto primeiro hoje. Observe quem realmente sustenta a conversa quando você para de remar sozinha." },
+      { day: 4, title: "Dia 4 — Inventário de Fatos vs. Fantasia", desc: "Releia seu Diário de Fatos. Pergunte a si mesma: 'Se ele NUNCA mudar nada do que fez nos últimos 30 dias, eu aceito viver assim por 5 anos?'" },
+      { day: 5, title: "Dia 5 — Um limite claro, sem grito", desc: "Na primeira atitude desalinhada, use uma resposta do Gerador (curta, firme, sem explicar demais) e encerre o assunto." },
+      { day: 6, title: "Dia 6 — Retome um prazer só seu", desc: "Faça algo que você deixou de lado esperando disponibilidade dele (sair com amigas, treino, autocuidado, projeto pessoal)." },
+      { day: 7, title: "Dia 7 — O Veredito de Cabeça Fria", desc: "Olhe os últimos 7 dias: ele se movimentou com consistência para te respeitar, ou só ficou irritado porque perdeu o controle? Sua resposta está aí." }
+    ];
+
+    // Toast
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 2200);
+    }
+
+    // Auth gate
+    function unlockApp() {
+      document.getElementById('gate-screen').classList.add('hidden');
+      document.getElementById('app-screen').classList.remove('hidden');
+      initApp();
+    }
+
+    if (localStorage.getItem(STORAGE_AUTH) === EXPECTED_PASS) {
+      unlockApp();
+    }
+
+    document.getElementById('gate-btn').addEventListener('click', () => {
+      const val = document.getElementById('gate-input').value.trim().toUpperCase();
+      if (val === EXPECTED_PASS) {
+        localStorage.setItem(STORAGE_AUTH, EXPECTED_PASS);
+        document.getElementById('gate-err').classList.add('hidden');
+        unlockApp();
+      } else {
+        document.getElementById('gate-err').classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('btn-lock').addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_AUTH);
+      location.reload();
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.tab;
+        ['respostas', 'diario', 'protocolo'].forEach(id => {
+          document.getElementById('tab-' + id).classList.toggle('hidden', id !== target);
+        });
+      });
+    });
+
+    let initialized = false;
+    function initApp() {
+      if (initialized) return;
+      initialized = true;
+      initReplies();
+      renderFacts();
+      renderDays();
+    }
+
+    // Aba 1: Respostas
+    function initReplies() {
+      const sel = document.getElementById('situation-select');
+      sel.innerHTML = '';
+      SITUATIONS.forEach((s, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = s.title;
+        sel.appendChild(opt);
+      });
+      sel.addEventListener('change', () => renderReplyCards(Number(sel.value)));
+      renderReplyCards(0);
+    }
+
+    function renderReplyCards(index) {
+      const s = SITUATIONS[index];
+      const box = document.getElementById('replies-container');
+      box.innerHTML = `
+        <div class="reply-card">
+          <span class="reply-label">✦ Opção 1 — Elegante &amp; Cortante</span>
+          <div class="reply-text">"${s.elegante}"</div>
+          <button class="btn btn-ghost btn-sm" onclick="copyText(${index}, 'elegante')">Copiar resposta</button>
+        </div>
+        <div class="reply-card">
+          <span class="reply-label">✦ Opção 2 — Direta &amp; Sem Drama</span>
+          <div class="reply-text">"${s.direta}"</div>
+          <button class="btn btn-ghost btn-sm" onclick="copyText(${index}, 'direta')">Copiar resposta</button>
+        </div>
+        <div class="reply-card">
+          <span class="reply-label">✦ Opção 3 — Curta &amp; Fria (Zero Energia)</span>
+          <div class="reply-text">"${s.fria}"</div>
+          <button class="btn btn-ghost btn-sm" onclick="copyText(${index}, 'fria')">Copiar resposta</button>
+        </div>
+        <div class="dont-box">
+          <strong>⚠️ O que NÃO fazer:</strong> ${s.dont}
+        </div>
+      `;
+    }
+
+    window.copyText = function(index, key) {
+      const txt = SITUATIONS[index][key];
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(txt).then(() => showToast('Resposta copiada! Agora cole com postura.'));
+      } else {
+        showToast('Selecione e copie o texto acima.');
+      }
+    };
+
+    // Aba 2: Diário de Fatos
+    function getFacts() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_FACTS) || '[]'); }
+      catch { return []; }
+    }
+
+    function saveFacts(list) {
+      localStorage.setItem(STORAGE_FACTS, JSON.stringify(list));
+    }
+
+    document.getElementById('btn-add-fact').addEventListener('click', () => {
+      const cat = document.getElementById('fact-cat').value;
+      const what = document.getElementById('fact-what').value.trim();
+      const excuse = document.getElementById('fact-excuse').value.trim();
+      if (!what) { showToast('Escreva o fato antes de salvar.'); return; }
+
+      const list = getFacts();
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('pt-BR') + ' • ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      list.unshift({ id: Date.now(), date: dateStr, cat, what, excuse: excuse || 'Sem justificativa' });
+      saveFacts(list);
+      document.getElementById('fact-what').value = '';
+      document.getElementById('fact-excuse').value = '';
+      renderFacts();
+      showToast('Fato registrado com sucesso.');
+    });
+
+    document.getElementById('btn-clear-facts').addEventListener('click', () => {
+      if (confirm('Deseja apagar todos os fatos registrados deste celular?')) {
+        saveFacts([]);
+        renderFacts();
+        showToast('Registros apagados.');
+      }
+    });
+
+    window.deleteFact = function(id) {
+      const list = getFacts().filter(f => f.id !== id);
+      saveFacts(list);
+      renderFacts();
+    };
+
+    function renderFacts() {
+      const list = getFacts();
+      document.getElementById('stat-total').textContent = list.length;
+      document.getElementById('btn-clear-facts').classList.toggle('hidden', list.length === 0);
+
+      // Categoria mais repetida
+      const counts = {};
+      list.forEach(f => counts[f.cat] = (counts[f.cat] || 0) + 1);
+      const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+      document.getElementById('stat-top').textContent = top ? `${top[0].split('/')[0]} (${top[1]}x)` : '—';
+
+      const alertBox = document.getElementById('pattern-alert');
+      if (list.length >= 3) {
+        alertBox.textContent = `Alerta de Realidade: você já registrou ${list.length} fatos. Quando um comportamento se repete 3 vezes sem mudança real, não é "fase" — é padrão escolhido.`;
+        alertBox.classList.remove('hidden');
+      } else {
+        alertBox.classList.add('hidden');
+      }
+
+      const container = document.getElementById('facts-list');
+      container.innerHTML = '';
+      list.forEach(f => {
+        const div = document.createElement('div');
+        div.className = 'fact-item';
+        div.innerHTML = `
+          <div class="fact-meta">
+            <span>${f.cat} • ${f.date}</span>
+            <button class="fact-del" onclick="deleteFact(${f.id})">apagar</button>
+          </div>
+          <div style="font-size:0.93rem; margin-bottom:6px;"><strong>Fato:</strong> ${escapeHtml(f.what)}</div>
+          <div style="font-size:0.86rem; color:var(--muted);"><strong>Desculpa dele:</strong> ${escapeHtml(f.excuse)}</div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+    }
+
+    // Aba 3: Protocolo 7 dias
+    function getDoneDays() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_DAYS) || '[]'); }
+      catch { return []; }
+    }
+
+    function renderDays() {
+      const done = getDoneDays();
+      const pct = Math.round((done.length / DAYS.length) * 100);
+      document.getElementById('days-progress-txt').textContent = `${done.length} de 7 dias`;
+      document.getElementById('days-progress-fill').style.width = `${pct}%`;
+
+      const box = document.getElementById('days-list');
+      box.innerHTML = '';
+      DAYS.forEach(d => {
+        const isDone = done.includes(d.day);
+        const card = document.createElement('div');
+        card.className = 'day-card' + (isDone ? ' done' : '');
+        card.innerHTML = `
+          <div class="day-check">${isDone ? '✓' : ''}</div>
+          <div>
+            <h3 style="font-size:0.96rem; margin-bottom:3px;">${d.title}</h3>
+            <p style="font-size:0.86rem; color:var(--muted); margin:0;">${d.desc}</p>
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          const cur = getDoneDays();
+          const idx = cur.indexOf(d.day);
+          if (idx >= 0) cur.splice(idx, 1);
+          else cur.push(d.day);
+          localStorage.setItem(STORAGE_DAYS, JSON.stringify(cur));
+          renderDays();
+        });
+        box.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
